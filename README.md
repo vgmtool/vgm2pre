@@ -21,9 +21,9 @@ So far there's no installation; the compiled vgm2pre is a standalone executable 
 
 Open the VGM2PRE GUI.
 
-`vgm2pre path`
+`vgm2pre paths`
 
-<var>path</var> can either be a file or a directory; if a file it will process that singular file, but if a directory it will process all the VGM/VGZ files in that given directory. Preset files are output into either the given directory or the same directory as the given file and duplicates are ignored. The loudest version of a given duplicate preset will be dumped.
+Open the VGM2PRE GUI with predetermined paths ready to be dumped. <var>paths</var> is a space-separated list of either files or directories; if a file it will process that singular file, but if a directory it will process all the VGM/VGZ files in that given directory. Preset files are output into either the given directory or the same directory as the given file and duplicates are ignored. The loudest version of a given duplicate preset will be dumped.
 
 <!--
 `vgm2pre -pOPN abcdef path`
