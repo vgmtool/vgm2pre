@@ -12,7 +12,7 @@ ifeq ($(platform),windows)
     link += -m32
     rlink += --target=pe-i386
   endif
-  link += -mwindows -static
+  link += -mwindows -mconsole -static
   objects += obj/resource.o
 endif
 

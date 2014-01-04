@@ -211,9 +211,9 @@ void SubYM2612::process(const lstring &fl, const V2PConfiguration &cfg) {
 				fn_edit = {basename(fl[insList[i].file_id]),"_",j};
 #ifdef _YM2612_GYB_
 				if (!addToBank(insList[i],notdir(fn_edit),false,0)) {
-					_log({"ERR: Can't add '",fn_edit,"' to bank\n"});
+					_log({"ERR: Can't add '",fn_edit,"' to OPN bank\n"});
 				}
-				else _log({"OK: Added '",fn_edit,"' to bank\n"});
+				else _log({"OK: Added '",fn_edit,"' to OPN bank\n"});
 #endif
 				//_log({"Saving ",notdir(fn_edit),"..."});
 				if (canDumpOne) {
@@ -227,10 +227,10 @@ void SubYM2612::process(const lstring &fl, const V2PConfiguration &cfg) {
 		}
 	}
 #ifdef _YM2612_GYB_
-	fn_edit = {"bank-",(unsigned)time(NULL)};
+	fn_edit = {"bank-opn-",(unsigned)time(NULL)};
 	if (!cfg.disabledOPN[N::OPN::Types::GYB]&&cfg.dumpOPN[N::OPN::Types::GYB]&&bank.melody.insts.size()>0) {
 		if (!saveGYB(fn_edit)) {
-			_log({"ERR: Can't save Genesis YM2612 Bank file '",fn_edit,"' of size ",bank.melody.insts.size(),"\n"});
+			_log({"ERR: Can't save OPN Bank file '",fn_edit,"' of size ",bank.melody.insts.size(),"\n"});
 		}
 	}
 #endif

@@ -225,7 +225,7 @@ struct Processor {
 		}
 	}
 	void processDirectory(const string &d) {
-		filelist.empty();
+		//filelist.empty();
 		string fn;
 		if (directory::exists(d)) {
 			lstring vgms = directory::contents(d, "*.vg*");
@@ -233,7 +233,7 @@ struct Processor {
 			else {
 				for (auto &v : vgms) {
 					if (v.iendsWith(".vgm")||v.iendsWith(".vgz")||v.iendsWith(".vgm.gz")) {
-						fn = (string){d,v};
+						fn = (string){d,!d.endsWith("/")&&!d.endsWith("\\")?"/":"",v};
 						processFile(fn);
 					}
 				}
@@ -309,7 +309,15 @@ struct Win : Window {
 			bDo.setEnabled(false);
 			bDo.onActivate = [&]() {
 				if (prog->proc.finalize()) {
-					setStatus("Dumping complete.");
+					setStatus(string{
+						"Dumping complete.",
+						!prog->cfg.disabledOPN[N::OPN::Types::GYB]&&prog->cfg.dumpOPN[N::OPN::Types::GYB]?
+							" GYB was selected, check program's folder":
+							"",
+						!prog->cfg.disabledOPM[N::OPM::Types::OPM]&&prog->cfg.dumpOPM[N::OPM::Types::OPM]?
+							" OPM was selected, check program's folder":
+							"",
+					});
 				}
 				else {
 					setStatus("Dumping failed.");

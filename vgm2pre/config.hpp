@@ -4,6 +4,7 @@
 #include "common.hpp"
 
 struct V2PConfiguration {
+	bool headless;
 	// YM2612
 	bool dumpOPN[N::OPN::Types::Total] = {0};
 	bool disabledOPN[N::OPN::Types::Total] = {0};
