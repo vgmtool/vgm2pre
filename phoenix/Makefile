@@ -13,8 +13,8 @@ else
   endif
 
   ifeq ($(phoenix),gtk)
-    phoenixflags = $(cppflags) $(flags) -DPHOENIX_GTK `pkg-config --cflags gtk+-2.0`
-    phoenixlink = `pkg-config --libs gtk+-2.0`
+    phoenixflags = $(cppflags) $(flags) -DPHOENIX_GTK `pkg-config --cflags gtk+-2.0 x11`
+    phoenixlink = `pkg-config --libs gtk+-2.0 x11`
   endif
 
   ifeq ($(phoenix),qt)
