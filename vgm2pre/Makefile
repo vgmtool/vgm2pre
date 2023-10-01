@@ -22,14 +22,17 @@ all: $(objects)
 #obj/resource.o: ../phoenix/windows/phoenix.rc
 #	windres ../phoenix/windows/phoenix.rc obj/resource.o
 
-obj/resource.o: app.rc
+obj/resource.o: app.rc obj
 	windres $(rlink) app.rc obj/resource.o
 
-obj/phoenix.o: ../phoenix/phoenix.cpp
+obj/phoenix.o: ../phoenix/phoenix.cpp obj
 	$(compiler) $(phoenixflags) -o obj/phoenix.o -c ../phoenix/phoenix.cpp
 
-obj/$(application).o: $(application).cpp *.cpp *.hpp ui/*.hpp
+obj/$(application).o: $(application).cpp *.cpp *.hpp ui/*.hpp obj
 	$(compiler) $(cppflags) $(flags) -o obj/$(application).o -c $(application).cpp
+
+obj:
+	mkdir $@
 
 install:
 	sudo cp $(application) /usr/local/bin/$(application)
